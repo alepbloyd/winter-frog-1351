@@ -10,6 +10,8 @@
       <% plot.plants.each do |plant| %>
         <p id="plot-<%=plot.id%>-plant-<%=plant.id%>">
           Plant Name: <%=plant.name%>
+          <br>
+          <%=link_to "Remove This Plant", "/plot_plant", method: :delete%>
         </p>
       <% end %>
     </div>
