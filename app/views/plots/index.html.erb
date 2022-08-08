@@ -5,14 +5,18 @@
   <% @plots.each do |plot|%>
     <div id="plot-<%=plot.id%>">
       <p>
-        Plot Number: <%= plot.number%>
+        <h2> Plot Number: <%= plot.number%> </h2>
       </p>
       <% plot.plants.each do |plant| %>
-        <p id="plot-<%=plot.id%>-plant-<%=plant.id%>">
+        <div id="plot-<%=plot.id%>-plant-<%=plant.id%>">
           Plant Name: <%=plant.name%>
           <br>
-          <%=link_to "Remove This Plant", "/plot_plant", method: :delete%>
-        </p>
+          <%= form_with url: plot_plant_path(plot,plant), method: :delete, local: true do |form| %>
+            <%=form.hidden_field :plot_id, value: plot.id%>
+            <%=form.hidden_field :plant_id, value: plant.id%>
+            <%=form.submit "Remove This Plant"%>
+          <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>
