@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :plots, only: %i[index]
   
   resources :plot_plants
+
+  resources :gardens, only: %i[show]
 end
