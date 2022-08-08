@@ -1,0 +1,23 @@
+<h1> Plot Index Page </h1>
+
+
+<div id="plots-information">
+  <% @plots.each do |plot|%>
+    <div id="plot-<%=plot.id%>">
+      <p>
+        <h2> Plot Number: <%= plot.number%> </h2>
+      </p>
+      <% plot.plants.each do |plant| %>
+        <div id="plot-<%=plot.id%>-plant-<%=plant.id%>">
+          Plant Name: <%=plant.name%>
+          <br>
+          <%= form_with url: plot_plant_path(plot,plant), method: :delete, local: true do |form| %>
+            <%=form.hidden_field :plot_id, value: plot.id%>
+            <%=form.hidden_field :plant_id, value: plant.id%>
+            <%=form.submit "Remove This Plant"%>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
