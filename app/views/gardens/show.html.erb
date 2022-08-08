@@ -1,9 +1,9 @@
 <h1> Garden Show Page </h1>
 
 <div id="under-100-day-plants">
-  <%@garden.under_100_day_plants.each do |plant| %>
-    <p>
+  <%@garden.under_100_day_plants.each_with_index do |plant,index| %>
+    <div id="plant-<%=index+1%>">
       Plant Name: <%= plant.name%>
-    </p>
+    </div>
   <% end %>
 </div>
